@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inspector">
+            <h2><span>Inspector</span> {{inspector.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fotopatente</span></dt>
+                <dd>
+                    <div *ngIf="inspector.fotopatente">
+                        <a (click)="openFile(inspector.fotopatenteContentType, inspector.fotopatente)">
+                            <img [src]="'data:' + inspector.fotopatenteContentType + ';base64,' + inspector.fotopatente" style="max-width: 100%;" alt="inspector image"/>
+                        </a>
+                        {{inspector.fotopatenteContentType}}, {{byteSize(inspector.fotopatente)}}
+                    </div>
+                </dd>
+                <dt><span>Fotocamion</span></dt>
+                <dd>
+                    <div *ngIf="inspector.fotocamion">
+                        <a (click)="openFile(inspector.fotocamionContentType, inspector.fotocamion)">
+                            <img [src]="'data:' + inspector.fotocamionContentType + ';base64,' + inspector.fotocamion" style="max-width: 100%;" alt="inspector image"/>
+                        </a>
+                        {{inspector.fotocamionContentType}}, {{byteSize(inspector.fotocamion)}}
+                    </div>
+                </dd>
+                <dt><span>Vehiculomodelo</span></dt>
+                <dd>
+                    <span>{{inspector.vehiculomodelo}}</span>
+                </dd>
+                <dt><span>Infoadicional</span></dt>
+                <dd>
+                    <span>{{inspector.infoadicional}}</span>
+                </dd>
+                <dt><span>Celular</span></dt>
+                <dd>
+                    <span>{{inspector.celular}}</span>
+                </dd>
+                <dt><span>Cuit</span></dt>
+                <dd>
+                    <span>{{inspector.cuit}}</span>
+                </dd>
+                <dt><span>Patente</span></dt>
+                <dd>
+                    <span>{{inspector.patente}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inspector', inspector.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

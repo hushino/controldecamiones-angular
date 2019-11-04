@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-inspector-heading">Create or edit a Inspector</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fotopatente">Fotopatente</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('fotopatenteContentType').value + ';base64,' + editForm.get('fotopatente').value" style="max-height: 100px;" *ngIf="editForm.get('fotopatente').value" alt="inspector image"/>
+                        <div *ngIf="editForm.get('fotopatente').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('fotopatenteContentType').value}}, {{byteSize(editForm.get('fotopatente').value)}}</span>
+                            <button type="button" (click)="clearInputImage('fotopatente', 'fotopatenteContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fotopatente" (change)="setFileData($event, 'fotopatente', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotopatente" id="field_fotopatente"
+                           formControlName="fotopatente"/>
+                    <input type="hidden" class="form-control" name="fotopatenteContentType" id="field_fotopatenteContentType"
+                           formControlName="fotopatenteContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fotocamion">Fotocamion</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('fotocamionContentType').value + ';base64,' + editForm.get('fotocamion').value" style="max-height: 100px;" *ngIf="editForm.get('fotocamion').value" alt="inspector image"/>
+                        <div *ngIf="editForm.get('fotocamion').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('fotocamionContentType').value}}, {{byteSize(editForm.get('fotocamion').value)}}</span>
+                            <button type="button" (click)="clearInputImage('fotocamion', 'fotocamionContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fotocamion" (change)="setFileData($event, 'fotocamion', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotocamion" id="field_fotocamion"
+                           formControlName="fotocamion"/>
+                    <input type="hidden" class="form-control" name="fotocamionContentType" id="field_fotocamionContentType"
+                           formControlName="fotocamionContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vehiculomodelo">Vehiculomodelo</label>
+                    <input type="text" class="form-control" name="vehiculomodelo" id="field_vehiculomodelo"
+                           formControlName="vehiculomodelo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_infoadicional">Infoadicional</label>
+                    <input type="text" class="form-control" name="infoadicional" id="field_infoadicional"
+                           formControlName="infoadicional"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_celular">Celular</label>
+                    <input type="number" class="form-control" name="celular" id="field_celular"
+                           formControlName="celular"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cuit">Cuit</label>
+                    <input type="text" class="form-control" name="cuit" id="field_cuit"
+                           formControlName="cuit"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_patente">Patente</label>
+                    <input type="text" class="form-control" name="patente" id="field_patente"
+                           formControlName="patente"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "fotopatente",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fotocamion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "vehiculomodelo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "infoadicional",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "celular",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cuit",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "patente",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20191104012215",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "inspector",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
